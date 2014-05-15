@@ -1,0 +1,50 @@
+********************************************************************************
+VLC module for prototyping and benchmark of computer vision algorithms
+********************************************************************************
+
+--------------------------------------------------------------------------------
+Compilation
+--------------------------------------------------------------------------------
+
+On Linux with autotools :
+
+libvlccore-dev, build-essentials, automake, libtool being installed, type :
+
+autoreconf -vfi
+./configure
+make
+
+The created module is : src/.libs/librem_plugin.so
+
+
+--------------------------------------------------------------------------------
+Usage
+--------------------------------------------------------------------------------
+
+Place the module with the other VLC video-filter modules so that VLC recognizes
+it (on Debian/Ubuntu : /usr/lib/vlc/plugins/video_filter).
+
+In VLC :
+ - Tools->Preferences(tick "All") -> Video -> Filters
+ - Tick "Rem generic video filter"
+ - Video -> Filters -> Rem, 3 parameters :
+    - Treatment to be used : the shared library implementing the treatment
+    - Interval : the number of frames over which the statistics are averaged
+    - Type of input : the format passed to the treatment
+
+
+--------------------------------------------------------------------------------
+To create your own treatment
+--------------------------------------------------------------------------------
+
+See the other project called rem_algo that focuses on this part.
+
+
+--------------------------------------------------------------------------------
+ANNEX. Shared libraries dependencies on Windows
+--------------------------------------------------------------------------------
+
+If x86_64-w64-mingw32-g++ is used, the created dll needs libgcc_s_sjlj-1.dll
+and libstdc++-6.dll. To force a static linkage of those dlls, the script
+dll_independent can be used. The script "dll_dependent.sh" reverts the actions
+of "dll_independent.sh".
