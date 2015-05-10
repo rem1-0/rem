@@ -8,7 +8,7 @@ Compilation
 
 On Linux with autotools :
 
-libvlccore-dev, build-essentials, automake, libtool being installed, type :
+libvlccore-dev, build-essential, automake, libtool being installed, type :
 
 autoreconf -vfi
 ./configure
